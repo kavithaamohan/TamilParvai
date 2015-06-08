@@ -50,7 +50,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebViewClient;
-import android.webkit.CookieManager;
 import android.widget.FrameLayout;
 
 /*
@@ -62,7 +61,7 @@ import android.widget.FrameLayout;
 public class CordovaWebView extends WebView {
 
     public static final String TAG = "CordovaWebView";
-    public static final String CORDOVA_VERSION = "3.7.1";
+    public static final String CORDOVA_VERSION = "3.6.4";
 
     private HashSet<Integer> boundKeyCodes = new HashSet<Integer>();
 
@@ -95,7 +94,6 @@ public class CordovaWebView extends WebView {
     // The URL passed to loadUrl(), not necessarily the URL of the current page.
     String loadedUrl;
     private CordovaPreferences preferences;
-    private App appPlugin;
 
     class ActivityResult {
         
@@ -154,13 +152,10 @@ public class CordovaWebView extends WebView {
         super.setWebViewClient(webViewClient);
 
         pluginManager = new PluginManager(this, this.cordova, pluginEntries);
-        bridge = new CordovaBridge(pluginManager, new NativeToJsMessageQueue(this, cordova), this.cordova.getActivity().getPackageName());
+        bridge = new CordovaBridge(pluginManager, new NativeToJsMessageQueue(this, cordova));
         resourceApi = new CordovaResourceApi(this.getContext(), pluginManager);
 
-        pluginManager.addService(App.PLUGIN_NAME, "org.apache.cordova.App");
-        // This will be removed in 4.0.x in favour of the plugin not being bundled.
-        pluginManager.addService(new PluginEntry("SplashScreenInternal", "org.apache.cordova.SplashScreenInternal", true));
-        pluginManager.init();
+        pluginManager.addService("App", "org.apache.cordova.App");
         initWebViewSettings();
         exposeJsInterface();
     }
@@ -192,14 +187,7 @@ public class CordovaWebView extends WebView {
         settings.setJavaScriptEnabled(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
-
-        // Enable third-party cookies if on Lolipop. TODO: Make this configurable
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-        {
-            CookieManager cookieManager = CookieManager.getInstance();
-            cookieManager.setAcceptThirdPartyCookies(this, true);
-        }
-
+        
         // Set the nav dump for HTC 2.x devices (disabling for ICS, deprecated entirely for Jellybean 4.2)
         try {
             Method gingerbread_getMethod =  WebSettings.class.getMethod("setNavDump", new Class[] { boolean.class });
@@ -227,12 +215,8 @@ public class CordovaWebView extends WebView {
         
         // Jellybean rightfully tried to lock this down. Too bad they didn't give us a whitelist
         // while we do this
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1)
             Level16Apis.enableUniversalAccess(settings);
-        }
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            Level17Apis.setMediaPlaybackRequiresUserGesture(settings, false);
-        }
         // Enable database
         // We keep this disabled because we use or shim to get around DOM_EXCEPTION_ERROR_16
         String databasePath = getContext().getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
@@ -395,11 +379,8 @@ public class CordovaWebView extends WebView {
         initIfNecessary();
 
         if (recreatePlugins) {
-            // Don't re-initialize on first load.
-            if (loadedUrl != null) {
-                this.pluginManager.init();
-            }
             this.loadedUrl = url;
+            this.pluginManager.init();
         }
 
         // Create a timeout timer for loadUrl
@@ -454,7 +435,7 @@ public class CordovaWebView extends WebView {
         if (LOG.isLoggable(LOG.DEBUG) && !url.startsWith("javascript:")) {
             LOG.d(TAG, ">>> loadUrlNow()");
         }
-        if (url.startsWith("file://") || url.startsWith("javascript:") || url.startsWith("about:") || internalWhitelist.isUrlWhiteListed(url)) {
+        if (url.startsWith("file://") || url.startsWith("javascript:") || internalWhitelist.isUrlWhiteListed(url)) {
             super.loadUrl(url);
         }
     }
@@ -477,6 +458,9 @@ public class CordovaWebView extends WebView {
         else {
 
             LOG.d(TAG, "loadUrlIntoView(%s, %d)", url, time);
+
+            // Send message to show splashscreen now if desired
+            this.postMessage("splashscreen", "show");
         }
 
         // Load url
@@ -635,13 +619,13 @@ public class CordovaWebView extends WebView {
         if(boundKeyCodes.contains(keyCode))
         {
             if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-                sendJavascriptEvent("volumedownbutton");
-                return true;
+                    this.loadUrl("javascript:cordova.fireDocumentEvent('volumedownbutton');");
+                    return true;
             }
             // If volumeup key
             else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-                sendJavascriptEvent("volumeupbutton");
-                return true;
+                    this.loadUrl("javascript:cordova.fireDocumentEvent('volumeupbutton');");
+                    return true;
             }
             else
             {
@@ -683,7 +667,7 @@ public class CordovaWebView extends WebView {
                 // The webview is currently displayed
                 // If back key is bound, then send event to JavaScript
                 if (isButtonPlumbedToJs(KeyEvent.KEYCODE_BACK)) {
-                    sendJavascriptEvent("backbutton");
+                    this.loadUrl("javascript:cordova.fireDocumentEvent('backbutton');");
                     return true;
                 } else {
                     // If not bound
@@ -698,31 +682,19 @@ public class CordovaWebView extends WebView {
         // Legacy
         else if (keyCode == KeyEvent.KEYCODE_MENU) {
             if (this.lastMenuEventTime < event.getEventTime()) {
-                sendJavascriptEvent("menubutton");
+                this.loadUrl("javascript:cordova.fireDocumentEvent('menubutton');");
             }
             this.lastMenuEventTime = event.getEventTime();
             return super.onKeyUp(keyCode, event);
         }
         // If search key
         else if (keyCode == KeyEvent.KEYCODE_SEARCH) {
-            sendJavascriptEvent("searchbutton");
+            this.loadUrl("javascript:cordova.fireDocumentEvent('searchbutton');");
             return true;
         }
 
         //Does webkit change this behavior?
         return super.onKeyUp(keyCode, event);
-    }
-
-    private void sendJavascriptEvent(String event) {
-        if (appPlugin == null) {
-            appPlugin = (App)this.pluginManager.getPlugin(App.PLUGIN_NAME);
-        }
-
-        if (appPlugin == null) {
-            LOG.w(TAG, "Unable to fire event without existing plugin");
-            return;
-        }
-        appPlugin.fireJavascriptEvent(event);
     }
 
     public void setButtonPlumbedToJs(int keyCode, boolean override) {
@@ -778,7 +750,7 @@ public class CordovaWebView extends WebView {
     {
         LOG.d(TAG, "Handle the pause");
         // Send pause event to JavaScript
-        sendJavascriptEvent("pause");
+        this.loadUrl("javascript:try{cordova.fireDocumentEvent('pause');}catch(e){console.log('exception firing pause event from native');};");
 
         // Forward to plugins
         if (this.pluginManager != null) {
@@ -796,8 +768,9 @@ public class CordovaWebView extends WebView {
     
     public void handleResume(boolean keepRunning, boolean activityResultKeepRunning)
     {
-        sendJavascriptEvent("resume");
 
+        this.loadUrl("javascript:try{cordova.fireDocumentEvent('resume');}catch(e){console.log('exception firing resume event from native');};");
+        
         // Forward to plugins
         if (this.pluginManager != null) {
             this.pluginManager.onResume(keepRunning);
@@ -810,14 +783,11 @@ public class CordovaWebView extends WebView {
     
     public void handleDestroy()
     {
-        // Cancel pending timeout timer.
-        loadUrlTimeout++;
+        // Send destroy event to JavaScript
+        this.loadUrl("javascript:try{cordova.require('cordova/channel').onDestroy.fire();}catch(e){console.log('exception firing destroy event from native');};");
 
         // Load blank page so that JavaScript onunload is called
         this.loadUrl("about:blank");
-        
-        //Remove last AlertDialog
-        this.chromeClient.destroyLastDialog();
 
         // Forward to plugins
         if (this.pluginManager != null) {
@@ -855,19 +825,12 @@ public class CordovaWebView extends WebView {
     // Wrapping these functions in their own class prevents warnings in adb like:
     // VFY: unable to resolve virtual method 285: Landroid/webkit/WebSettings;.setAllowUniversalAccessFromFileURLs
     @TargetApi(16)
-    private static final class Level16Apis {
+    private static class Level16Apis {
         static void enableUniversalAccess(WebSettings settings) {
             settings.setAllowUniversalAccessFromFileURLs(true);
         }
     }
-
-    @TargetApi(17)
-    private static final class Level17Apis {
-        static void setMediaPlaybackRequiresUserGesture(WebSettings settings, boolean value) {
-            settings.setMediaPlaybackRequiresUserGesture(value);
-        }
-    }
-
+    
     public void printBackForwardList() {
         WebBackForwardList currentList = this.copyBackForwardList();
         int currentSize = currentList.getSize();
