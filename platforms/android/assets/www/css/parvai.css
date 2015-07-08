@@ -1,0 +1,35 @@
+body {
+	background-color: #FFFFA9;
+}
+
+.main-header {
+	background: -webkit-linear-gradient(left top, #372A20, #A2754F); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(bottom right, #372A20, #A2754F); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(bottom right, #372A20, #A2754F); /* For Firefox 3.6 to 15 */
+  	background: linear-gradient(to bottom right, #372A20, #A2754F); /
+}
+
+.main-title {
+	color: #FFFFFF;
+	font-size: 18px;
+	text-align: center;
+}
+
+/* Main Div Styling */
+.content {
+  padding: 50px 0 0 0;
+}
+
+/* Align Nav Section */
+.nav-section {
+	margin : auto;
+	text-align : center;
+	margin-top : 5px;
+}
+
+.category {
+	margin: 5px 5px 5px 5px;
+  	padding: 15px 5px 15px 5px;	
+}
+
+
