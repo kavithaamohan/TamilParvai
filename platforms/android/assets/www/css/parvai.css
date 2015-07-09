@@ -32,4 +32,26 @@ body {
   	padding: 15px 5px 15px 5px;	
 }
 
+/* Styling for category listing on home page */
+ul {
+	margin : 5px;
+	padding : 0px;
+}
 
+ul.list-category li {
+	list-style-type: none;
+	padding: 7px 3px;
+	margin: 10px;
+	background: radial-gradient(to bottom right, #A2754F, #A2754F );
+	background: radial-gradient(#E8BD98, #BA8C64, #7E5D41);
+	border-radius: 5px;
+	box-shadow: 5px 5px 3px #3F2B19;
+}
+
+ul.list-category li a h3 {
+	color: #000000;
+  	font-weight: bold;	
+	font-size: 16px;
+	padding: 2px;
+	margin: 0px;
+}

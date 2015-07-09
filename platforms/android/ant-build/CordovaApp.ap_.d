@@ -32,6 +32,7 @@
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/cordova.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/cordova_plugins.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css \
+/Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/data \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/img \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/index.html \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js \
@@ -40,6 +41,7 @@
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css/bootstrap.css.map \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css/index.css \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css/parvai.css \
+/Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/data/category.json \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/img/logo.png \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/angular \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/angular-resource \
