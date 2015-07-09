@@ -39,13 +39,11 @@ ul {
 }
 
 ul.list-category li {
-	list-style-type: none;
-	padding: 7px 3px;
-	margin: 10px;
-	background: radial-gradient(to bottom right, #A2754F, #A2754F );
-	background: radial-gradient(#E8BD98, #BA8C64, #7E5D41);
-	border-radius: 5px;
-	box-shadow: 5px 5px 3px #3F2B19;
+  list-style-type: none;
+  padding: 10px 3px;
+  margin: 10px;
+  background: radial-gradient(#F0DBC7, #D8A87E, #7E5D41);
+  border-radius: 10px;
 }
 
 ul.list-category li a h3 {

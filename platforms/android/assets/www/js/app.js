@@ -1,6 +1,6 @@
 'use strict';
 /* App Module */
-var tamilPaarvaiApp = angular.module('tamilPaarvaiApp', ['ngRoute', 'pascalprecht.translate', 'tamilPaarvaiControllers']);
+var tamilPaarvaiApp = angular.module('tamilPaarvaiApp', ['ngRoute', 'pascalprecht.translate', 'tamilPaarvaiControllers', 'parvaiServices']);
 
 tamilPaarvaiApp.config(['$routeProvider', 
 		function ($routeProvider) {

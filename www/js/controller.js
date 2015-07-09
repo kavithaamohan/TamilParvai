@@ -4,15 +4,18 @@
 
 var tamilPaarvaiControllers = angular.module('tamilPaarvaiControllers', []);
 
-tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 
-  function($scope, $http) {
+tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 'StorageService', 
+  function($scope, $http, storageService) {
 	
 	$scope.displayHome = function () {       
 		console.log('Display Home Screen');
 
+		//Sync Local Data
+		//window.plugins.spinnerDialog.show();
+		storageService.syncDate();
 
 		//FIXME = Collect this from service
-		$http.get('data/category.json').success(function(data) {
+		$http.get('files/category.json').success(function(data) {
 			$scope.categories = data;
 		});
  
