@@ -12,6 +12,10 @@ tamilPaarvaiApp.config(['$routeProvider',
         templateUrl : 'partials/articles.html',
         controller : 'ArticlesCtrl'
       }).
+      when('/article/:cat/:id/:index', {
+        templateUrl : 'partials/article.html',
+        controller : 'ArticleCtrl'
+      }).
 			otherwise({
 				redirectTo : '/home'
 			});

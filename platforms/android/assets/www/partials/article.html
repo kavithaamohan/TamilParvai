@@ -1,0 +1,10 @@
+<div class="article" ng-swipe-left="older({{index}})" ng-swipe-right="newer({{index}})">
+	<input type="hidden" id="sequence" ng-model="article.position"/></input>
+	<input type="hidden" ng-model="article.size"/></input>
+	<h4 id="article-title" class="article-head"><span ng-bind-html="article.title"></span></h4>
+	<div class="article-content" format-content ng-bind-html="article.content"></div>
+</div>	
+<!--nav id="footer" class="navbar navbar-default navbar-fixed-bottom footer">
+	<div class="position">{{ 'TIP' | translate }} {{tip.position}} of {{tip.size}} </div>
+	<img id="img-share" alt="Share" class="share" src="images/share.png" ng-click="share($event, tip)"/>
+</nav-->

@@ -9,4 +9,17 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+	<platform name="android">
+        <icon src="res/android/payanam_mdpi.png" density="mdpi" />
+        <icon src="res/android/payanam_hdpi.png" density="hdpi" />
+        <icon src="res/android/payanam_xhdpi.png" density="xhdpi" />
+        <icon src="res/android/payanam_xxhdpi.png" density="xxhdpi" />
+        <icon src="res/android/payanam_xxxhdpi.png" density="xxxhdpi" />
+
+		<!--splash src="res/screen/android/splash-port-ldpi.gif" density="port-ldpi"/>
+		<splash src="res/screen/android/splash-port-mdpi.gif" density="port-mdpi"/>
+		<splash src="res/screen/android/splash-port-hdpi.gif" density="port-hdpi"/>
+		<splash src="res/screen/android/splash-port-xhdpi.gif" density="port-xhdpi"/-->
+
+    </platform>	    
 </widget>

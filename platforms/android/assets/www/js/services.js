@@ -79,25 +79,10 @@ cacheServices.factory('cacheService', ['$cacheFactory', function ($cacheFactory)
 parvaiServices.factory ('ArticleService', function (StorageService, _, cacheService) {
 	var factory = {}; 
 
-	//Fetch All Articles 
-	/*
-	factory.fetchArticles = function() {
-		var key = 'sd-tt-articles';
-		var tips = cacheService.get(key);
-		if(!tips) {
-			tips = StorageService.collectTips();
-			if(tips) {
-				cacheService.put(key, tips);
-			}
-		}
-		return tips;
-	}
-	*/
-
 	//Fetch Articles By Category
 	factory.fetchArticlesByCategory = function(category) {
 		var key = 'CTGRY' + category;
-		console.log("CTGRY : " + key);
+		//console.log("CTGRY : " + key);
 		var articlesByCtgry = cacheService.get(key);
 		if(!articlesByCtgry) {
 			var articlesAll = StorageService.collectArticles();
@@ -122,6 +107,18 @@ parvaiServices.factory ('ArticleService', function (StorageService, _, cacheServ
 		}
 		return articlesByCtgry;
 	}
+
+	// Collect indexed Article for a category
+	factory.collectArticle = function(category, index) {
+		var self = this;
+		var article;
+		var articles = self.fetchArticlesByCategory(category);
+		article = articles[index];
+		article.position = parseInt(index) + 1;
+		article.size = articles.length;
+		return article;
+    }
+
 	
     return factory;
 }); 

@@ -10,6 +10,11 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
+    <icon density="mdpi" src="res/android/payanam_mdpi.png" />
+    <icon density="hdpi" src="res/android/payanam_hdpi.png" />
+    <icon density="xhdpi" src="res/android/payanam_xhdpi.png" />
+    <icon density="xxhdpi" src="res/android/payanam_xxhdpi.png" />
+    <icon density="xxxhdpi" src="res/android/payanam_xxxhdpi.png" />
     <name>Tamil Payanam</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

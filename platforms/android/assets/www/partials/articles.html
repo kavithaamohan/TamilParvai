@@ -1,6 +1,6 @@
 <div>
 	<div class="list-group article-list-item" ng-repeat="article in articles">
-		<a href="#/tip/{{category}}/{{$index}}" class="list-group-item">
+		<a href="#/article/{{categoryId}}/{{article.id}}/{{$index}}" class="list-group-item">
 			<div class="article-listitem-content">
 				<h4 class="list-group-item-heading"><span ng-bind-html="article.title"></span></h4>
 			</div>	

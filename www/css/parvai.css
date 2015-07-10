@@ -92,3 +92,25 @@ ul.list-category li a h3 {
 .list-group-item-text {
 	font-size : 16px;
 }
+
+.article {
+	 margin-bottom : 30px; 
+}	
+
+.article-head {
+	font-size : 18px;
+	padding-left : 5px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.article-content {
+	font-size : 16px;
+	padding : 5px;
+	text-align: center;
+}
+
+.article-content a {
+    margin-bottom: 20px;
+    display: block;
+}
