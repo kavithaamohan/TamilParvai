@@ -53,3 +53,42 @@ ul.list-category li a h3 {
 	padding: 2px;
 	margin: 0px;
 }
+
+.article-list-item {
+	margin : 3px;
+	background-color: transparent;
+}
+
+.article-list-item a {
+	background-color: transparent;
+}
+
+.article-listitem-content {
+	display: table-cell;
+    width: 90%;
+	vertical-align: middle;	
+}
+
+.article-listitem-icon {
+	display: table-cell;
+    width: 100px;
+	margin-left : 10px;
+	height : 70px;
+}
+
+.article-icon-img {
+	width: 100px;
+	height : 70px;
+}
+
+.list-group-item {
+  padding : 5px;
+}
+
+.list-group-item-heading {
+	font-size : 18px;
+}
+
+.list-group-item-text {
+	font-size : 16px;
+}

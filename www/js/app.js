@@ -1,6 +1,6 @@
 'use strict';
 /* App Module */
-var tamilPaarvaiApp = angular.module('tamilPaarvaiApp', ['ngRoute', 'pascalprecht.translate', 'tamilPaarvaiControllers', 'parvaiServices']);
+var tamilPaarvaiApp = angular.module('tamilPaarvaiApp', ['ngRoute', 'ngSanitize', 'pascalprecht.translate', 'tamilPaarvaiControllers', 'parvaiServices', 'parvaiFilters', 'underscore', 'cacheService']);
 
 tamilPaarvaiApp.config(['$routeProvider', 
 		function ($routeProvider) {
@@ -8,6 +8,10 @@ tamilPaarvaiApp.config(['$routeProvider',
 				templateUrl : 'partials/home.html',
 				controller : 'HomeCtrl'
 			}).
+      when('/articles/:cat', {
+        templateUrl : 'partials/articles.html',
+        controller : 'ArticlesCtrl'
+      }).
 			otherwise({
 				redirectTo : '/home'
 			});

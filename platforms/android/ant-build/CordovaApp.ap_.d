@@ -54,6 +54,7 @@
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/app.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/bootstrap \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/controller.js \
+/Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/filters.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/index.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/jquery \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/jquery-i18n-properties \
@@ -169,6 +170,7 @@
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/jquery-i18n-properties/jquery.i18n.properties.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/underscore/angular-underscore-module.js \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/underscore/underscore.js \
+/Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/partials/articles.html \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/partials/home.html \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/plugins/hu.dpal.phonegap.plugins.SpinnerDialog \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/plugins/org.apache.cordova.device \

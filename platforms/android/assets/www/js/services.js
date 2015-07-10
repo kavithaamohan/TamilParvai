@@ -31,18 +31,18 @@ parvaiServices.factory ('StorageService', function () {
 		});
 	}
 
-	//Collect all tips 
+	//Collect all articles 
 	storageFactory.collectArticles = function() {
-		//console.log('Collecting Tips from Local Storage');
-		var data =  window.localStorage.getItem("articles");
+		console.log('Collecting Articles from Local Storage');
+		var data =  window.localStorage.getItem(keyArticles);
 		return JSON.parse(data);
 	}
-	
+
 	//Collect tips by category
+	/*
 	storageFactory.collectArticlesByCat = function(ctgry) {
 		var data =  window.localStorage.getItem("articles");
 		var allTipsJSON = JSON.parse(data);
-		/*
 		var filtered = [];
 		for (var i = 0, len = allTipsJSON.length; i < len; i++) {
 			var bCtgryMatch = false;
@@ -58,9 +58,9 @@ parvaiServices.factory ('StorageService', function () {
 		};
 		var sortedFiltered = _.sortBy(filtered, "post_date").reverse();
 		return sortedFiltered;
-		*/
 		return allTipsJSON;
 	}
+	*/
 	
 	return storageFactory;
 });
@@ -79,8 +79,8 @@ cacheServices.factory('cacheService', ['$cacheFactory', function ($cacheFactory)
 parvaiServices.factory ('ArticleService', function (StorageService, _, cacheService) {
 	var factory = {}; 
 
-	/*	
 	//Fetch All Articles 
+	/*
 	factory.fetchArticles = function() {
 		var key = 'sd-tt-articles';
 		var tips = cacheService.get(key);
@@ -92,17 +92,20 @@ parvaiServices.factory ('ArticleService', function (StorageService, _, cacheServ
 		}
 		return tips;
 	}
+	*/
 
 	//Fetch Articles By Category
 	factory.fetchArticlesByCategory = function(category) {
 		var key = 'CTGRY' + category;
-		var tipsByCtgry = cacheService.get(key);
-		if(!tipsByCtgry) {
-			var tipsAll = StorageService.collectTips();
-			if(tipsAll) {
+		console.log("CTGRY : " + key);
+		var articlesByCtgry = cacheService.get(key);
+		if(!articlesByCtgry) {
+			var articlesAll = StorageService.collectArticles();
+			//articlesByCtgry = articlesAll;
+			if(articlesAll) {
 				var filtered = [];
 				if(category) {
-					tipsByCtgry = _.filter(tipsAll, function(item) {  
+					articlesByCtgry = _.filter(articlesAll, function(item) {  
 						var bCtgryMatch = false;
 						for (var j = 0, length = item.category.length; j < length; j++) {
 							if(item.category[j] == category) {
@@ -112,48 +115,55 @@ parvaiServices.factory ('ArticleService', function (StorageService, _, cacheServ
 						return bCtgryMatch; 
 					});
 				}	
-				tipsByCtgry = _.sortBy(tipsByCtgry, "post_date").reverse();
+				articlesByCtgry = _.sortBy(articlesByCtgry, "post_date").reverse();
 				//console.log("Filtered Article Length : " + tipsByCtgry.length);
-				cacheService.put(key, tipsByCtgry);
+				cacheService.put(key, articlesByCtgry);
 			}
 		}
-		return tipsByCtgry;
+		return articlesByCtgry;
 	}
 	
-	// Collect all Articles for a category
-    factory.collectArticles = function(category) {
-		var self = this;
-		var articles = self.fetchArticles();
-		if(articles) {
-			if(category) {
-				articles = _.filter(articles, function(item) { 
-					var bCtgryMatch = false;
-					for (var j = 0, length = item.category.length; j < length; j++) {
-						if(item.category[j] == category) {
-							bCtgryMatch = true;
-						}
+    return factory;
+}); 
+
+
+//Factory for managing category
+parvaiServices.factory ('CategoryService', function (StorageService, _, cacheService, $http, $q) {
+	var factory = {}; 
+
+	//Load Categories into Cache
+	factory.loadCategories = function() {
+		console.log('Load Categories From Filesystem');
+		return $http.get('files/category.json');
+	};
+
+
+	//Collect Categories from cache
+	factory.collectCategories = function() {
+		var deferred = $q.defer();
+		var key = 'tp-categories';
+		var categories = cacheService.get(key);
+		if(!categories) {
+			var promise = this.loadCategories();
+       		promise.then(
+          		function(payload) { 
+              		categories = payload.data;
+					if(categories) {
+						cacheService.put(key, categories);
 					}
-					return bCtgryMatch; 
-				});
-			}	
-			articles = _.sortBy(articles, "post_date").reverse();
-			console.log("Filtered Article Length : " + articles.length);
+              		deferred.resolve({categories: categories});
+					//console.log('Categories ' + JSON.stringify(categories));
+          		},
+          		function(errorPayload) {
+          			console.log('Failure loading movie ' + errorPayload);
+          			deferred.reject(errorPayload);
+          		});
+		} else {
+			deferred.resolve({categories: categories});
 		}
-		console.log('Service Method to Collect Article by Category : ' + category);
-		return articles;
-    }
-	
-	// Collect indexed Article for a category
-	factory.collectArticle = function(category, index) {
-		var self = this;
-		var article;
-		var articles = self.fetchArticlesByCategory(category);
-		article = articles[index];
-		article.position = parseInt(index) + 1;
-		article.size = articles.length;
-		return article;
-    }
-    */
+		return deferred.promise;
+	} 
+
 	
     return factory;
 }); 
