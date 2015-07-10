@@ -43,6 +43,7 @@
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css/index.css \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/css/parvai.css \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/files/articles.json \
+/Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/files/category-bkp.json \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/files/category.json \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/img/logo.png \
 /Users/prasathbasuvaraj/Documents/GitWorkSpace/TamilParvai/platforms/android/assets/www/js/angular \
