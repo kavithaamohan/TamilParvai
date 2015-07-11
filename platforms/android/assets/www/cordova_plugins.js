@@ -27,6 +27,11 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "id": "cordova-plugin-whitelist.whitelist",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -34,7 +39,8 @@ module.exports.metadata =
 {
     "hu.dpal.phonegap.plugins.SpinnerDialog": "1.3.1",
     "org.apache.cordova.device": "0.3.0",
-    "org.apache.cordova.dialogs": "0.3.0"
+    "org.apache.cordova.dialogs": "0.3.0",
+    "cordova-plugin-whitelist": "1.0.0"
 }
 // BOTTOM OF METADATA
 });
