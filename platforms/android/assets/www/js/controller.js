@@ -9,7 +9,7 @@ tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 'StorageServi
 	
 	$scope.displayHome = function () {       
 		//console.log('Display Home Screen');
-
+		window.plugins.spinnerDialog.show();
 		var promise =  categoryService.collectCategories();
 		promise.then (
   			function(data) {
@@ -22,10 +22,8 @@ tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 'StorageServi
   			});
 
 		//Sync Local Data
-		//window.plugins.spinnerDialog.show();
 		storageService.syncDate();
-
-
+    	window.plugins.spinnerDialog.hide();
 	};
 
 	//Show Home
@@ -40,6 +38,7 @@ tamilPaarvaiControllers.controller('ArticlesCtrl', ['$scope', 'ArticleService', 
   function($scope, articleService, $routeParams) {
 	$scope.displayArticles = function () {
 		var categoryId = $routeParams.cat;
+		window.plugins.spinnerDialog.show();
 		//console.log("Article Category : " + categoryId);
 		/*
 		var ctgry = Category.collectCategorty(categoryId);
@@ -59,6 +58,7 @@ tamilPaarvaiControllers.controller('ArticlesCtrl', ['$scope', 'ArticleService', 
 		//$("#main-title").text(ctgry.ctgryname);
 		//hidePopup();
 		//showBannerAd();
+		window.plugins.spinnerDialog.hide();
 	}
 	
 	//Loading the Tips

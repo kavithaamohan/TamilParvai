@@ -13,7 +13,7 @@ parvaiServices.factory ('StorageService', function () {
 		var fileURL =  "files/articles.json";
 		//var syncTime =  window.localStorage.getItem(keySyncTime);
 		var version = window.localStorage.getItem(keySyncVersion);
-		//window.plugins.spinnerDialog.show();
+		
 		//FIXME - Check if the data check has been done already
 		jQuery.getJSON(fileURL, function (data) {
 			console.log("Loading Articles from FileSystem");
@@ -27,7 +27,7 @@ parvaiServices.factory ('StorageService', function () {
 		}).fail(function(jqXHR, textStatus, errorThrown) {
 			console.log("Show Error Message - " + textStatus);
 		}).always(function() {
-
+			
 		});
 	}
 
