@@ -37,7 +37,8 @@ tamilPaarvaiApp.config(function ($translateProvider) {
           PADALGAL: '\u0baa\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd',
           KADHAIGAL: '\u0b95\u0ba4\u0bc8\u0b95\u0bb3\u0bcd',
           ARINDU: '\u0b85\u0bb1\u0bbf\u0ba8\u0bcd\u0ba4\u0bc1 \u0b95\u0bca\u0bb3\u0bcd\u0bb5\u0bcb\u0bae\u0bcd',
-          KUZANDHAI: '\u0b95\u0bc1\u0bb4\u0ba8\u0bcd\u0ba4\u0bc8 \u0bb5\u0bb3\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1' 
+          KUZANDHAI: '\u0b95\u0bc1\u0bb4\u0ba8\u0bcd\u0ba4\u0bc8 \u0bb5\u0bb3\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1',
+          AANMIGAM: '\u0b86\u0ba9\u0bcd\u0bae\u0bc0\u0b95\u0bae\u0bcd'  
         });
         $translateProvider.preferredLanguage('ta');
       });

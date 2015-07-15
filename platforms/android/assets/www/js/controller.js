@@ -9,7 +9,7 @@ tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 'StorageServi
 	
 	$scope.displayHome = function () {       
 		//console.log('Display Home Screen');
-		window.plugins.spinnerDialog.show();
+		//window.plugins.spinnerDialog.show();
 		var promise =  categoryService.collectCategories();
 		promise.then (
   			function(data) {
@@ -23,7 +23,7 @@ tamilPaarvaiControllers.controller('HomeCtrl', ['$scope', '$http', 'StorageServi
 
 		//Sync Local Data
 		storageService.syncDate();
-    	window.plugins.spinnerDialog.hide();
+    	//window.plugins.spinnerDialog.hide();
 	};
 
 	//Show Home

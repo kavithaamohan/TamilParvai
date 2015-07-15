@@ -10,6 +10,7 @@ parvaiServices.factory ('StorageService', function () {
 
 	//Collect all tips 
 	storageFactory.syncDate = function() {
+		var self = this;
 		var fileURL =  "files/articles.json";
 		//var syncTime =  window.localStorage.getItem(keySyncTime);
 		var version = window.localStorage.getItem(keySyncVersion);
@@ -29,7 +30,68 @@ parvaiServices.factory ('StorageService', function () {
 		}).always(function() {
 			
 		});
+
+		//FIXME - Do it one for each session
+		//var fileTransfer = new FileTransfer();
+		var uri = encodeURI("http://www.tamilpayanam.com/?json=y");
+		var lastSyncTime = window.localStorage.getItem(keySyncTime);
+		if(lastSyncTime) {
+			uri = encodeURI("http://www.tamilpayanam.com/?json=y&ts=" + lastSyncTime);
+		} 
+		console.log("Download URL : " + uri);
+		jQuery.getJSON(uri, function (data) {
+			console.log("Loading Latest Articles from Server");
+		}).done(function(data) {
+			//console.log("Fresh Data " + JSON.stringify(data));
+			self.syncLocalStorage(data);
+			/*
+			if(!version || data.version > version) {
+				console.log("Updating Local Storage");
+				window.localStorage.setItem(keySyncTime, data.time);
+				window.localStorage.setItem(keySyncVersion, data.version);
+				window.localStorage.setItem(keyArticles, JSON.stringify(data.articles));
+			}
+			*/	
+		}).fail(function(jqXHR, textStatus, errorThrown) {
+			console.log("Show Error Message - " + textStatus);
+		}).always(function() {
+			
+		});
 	}
+
+	//Sync Temp JSON
+	storageFactory.syncLocalStorage = function(remoteJSON) {	
+		var localArticles =  window.localStorage.getItem(keyArticles);
+		var localJSON = JSON.parse(localArticles);
+		console.log("Modified Array Size : " + _.size(remoteJSON));		
+		console.log("Local Array Size : " + _.size(localJSON));		
+		if(_.size(remoteJSON) >  0) {
+			$.each(remoteJSON.articles, function(key, item) {
+				var newArticle = true;
+				_.find(localJSON,function(rw, rwIdx) { 
+					if(rw.id == item.id) { 
+						//console.log ("Replace Existing Object for : " + key); 
+						localJSON[rwIdx] = item;
+						newArticle = false; 
+						return true;
+					}; 
+				});
+				//If new tip
+				if(newArticle) {
+					//console.log("New Object for : " + key + " - " + JSON.stringify(item));
+					item.new = true;
+					localJSON.push(item);
+					//newJSON.push(item);
+				} 
+			});
+			window.localStorage.setItem(keyArticles, JSON.stringify(localJSON));
+			var modifiedTime = remoteJSON.time;
+			if(typeof modifiedTime != 'undefined') {
+				window.localStorage.setItem(keySyncTime, remoteJSON.time);
+			}
+		}	
+	}
+
 
 	//Collect all articles 
 	storageFactory.collectArticles = function() {
