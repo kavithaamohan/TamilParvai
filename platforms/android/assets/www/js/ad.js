@@ -1,82 +1,92 @@
-//get the installed plugin instance
-var service = Cocoon.Ad;
+//Device Ready Event
+document.addEventListener("deviceready", initializeAd, false);
+function initializeAd() {
 
-//multiplatform default configuration
-service.configure({
-    ios: {
-         banner:"agltb3B1Yi1pbmNyDQsSBFNpdGUxxxxxxx",
-         bannerIpad:"agltb3B1Yi1pbmNyDQsSBFNpdGUzzzzz", //optional
-         interstitial:"agltb3B1Yi1pbmNyDQsSBFNpdGUyyyyyyy",
-         interstitialIpad:"agltb3B1Yi1pbmNyDQsSBFNpdGUtttttt", //optional
-    },
-    android: {
-         banner:"agltb3B1Yi1pbmNyDQsSBFNpdGUwwwwww",
-         interstitial:"agltb3B1Yi1pbmNyDQsSBFNpdGUhhhhhh"
-    }
-});
 
-//Create banner: optional AdUnit and BannerSize arguments
-var banner = service.createBanner();
+  //get the installed plugin instance
+  var service = Cocoon.Ad;
 
-//Configure banner listeners
-banner.on("load", function(){
-   console.log("Banner loaded " + banner.width, banner.height);
-   banner.show();
-});
+  //multiplatform default configuration
+  service.configure({
+      ios: {
+          /*
+           banner:"agltb3B1Yi1pbmNyDQsSBFNpdGUxxxxxxx",
+           bannerIpad:"agltb3B1Yi1pbmNyDQsSBFNpdGUzzzzz", //optional
+           interstitial:"agltb3B1Yi1pbmNyDQsSBFNpdGUyyyyyyy",
+           interstitialIpad:"agltb3B1Yi1pbmNyDQsSBFNpdGUtttttt", //optional
+           */
+      },
+      android: {
+           banner:"87d3c7c959254a138705750425f9cae3",
+           interstitial:"a27243024bdc4cc5b2a7a7d5160116ce"
+      }
+  });
 
-banner.on("fail", function(){
-   console.log("Banner failed to load");
-});
+  //Create banner: optional AdUnit and BannerSize arguments
+  var banner = service.createBanner();
 
-banner.on("show", function(){
-   console.log("Banner shown a modal content");
-});
+  //Configure banner listeners
+  banner.on("load", function(){
+     console.log("Banner loaded " + banner.width, banner.height);
+     banner.show();
+  });
 
-banner.on("dismiss", function(){
-   console.log("Banner dismissed the modal content");
-});
+  banner.on("fail", function(){
+     console.log("Banner failed to load");
+  });
 
-banner.on("click", function(){
-   console.log("Banner clicked");
-});
+  banner.on("show", function(){
+     console.log("Banner shown a modal content");
+  });
 
- //load banner
-banner.load();
+  banner.on("dismiss", function(){
+     console.log("Banner dismissed the modal content");
+  });
 
-//Show or hide banner
-banner.show();
-banner.hide();
+  banner.on("click", function(){
+     console.log("Banner clicked");
+  });
 
-//Automatic banner layout
-banner.setLayout(Cocoon.Ad.BannerLayout.TOP_CENTER);
+   //load banner
+  banner.load();
 
-//Custom banner layout
-banner.setLayout(Cocoon.Ad.BannerLayout.CUSTOM);
-banner.setPosition(x,y);
+  //Show or hide banner
+  banner.show();
+  //banner.hide();
 
-//Create interstitial: optional AdUnit argument
-var interstitial = service.createInterstitial();
+  //Automatic banner layout
+  banner.setLayout(Cocoon.Ad.BannerLayout.BOTTOM_CENTER);
 
-//Configure interstitial listeners
-interstitial.on("load", function(){
-    console.log("Interstitial loaded");
-});
-interstitial.on("fail", function(){
-    console.log("Interstitial failed");
-});
-interstitial.on("show", function(){
-    console.log("Interstitial shown");
-});
-interstitial.on("dismiss", function(){
-    console.log("Interstitial dismissed");
-});
+  //Custom banner layout
+  //banner.setLayout(Cocoon.Ad.BannerLayout.CUSTOM);
+  //banner.setPosition(x,y);
 
-interstitial.on("click", function(){
-    console.log("Interstitial clicked");
-});
+/*
+  //Create interstitial: optional AdUnit argument
+  var interstitial = service.createInterstitial();
 
-//load interstitial
-interstitial.load();
+  //Configure interstitial listeners
+  interstitial.on("load", function(){
+      console.log("Interstitial loaded");
+  });
+  interstitial.on("fail", function(){
+      console.log("Interstitial failed");
+  });
+  interstitial.on("show", function(){
+      console.log("Interstitial shown");
+  });
+  interstitial.on("dismiss", function(){
+      console.log("Interstitial dismissed");
+  });
 
-//show interstitial
-interstitial.show();
+  interstitial.on("click", function(){
+      console.log("Interstitial clicked");
+  });
+
+  //load interstitial
+  interstitial.load();
+
+  //show interstitial
+  interstitial.show();
+  */
+}

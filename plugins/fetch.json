@@ -71,5 +71,21 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cocoon-plugin-ads-android-mopub": {
+        "source": {
+            "type": "registry",
+            "id": "cocoon-plugin-ads-android-mopub"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cocoon-plugin-ads-android-common": {
+        "source": {
+            "type": "registry",
+            "id": "cocoon-plugin-ads-android-common"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

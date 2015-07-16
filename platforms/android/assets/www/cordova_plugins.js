@@ -199,6 +199,16 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "plugins/cocoon-plugin-common/www/cocoon.js",
+        "id": "cocoon-plugin-common.Cocoon",
+        "runs": true
+    },
+    {
+        "file": "plugins/cocoon-plugin-ads-common/www/cocoon_ads.js",
+        "id": "cocoon-plugin-ads-common.Ads",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -210,7 +220,11 @@ module.exports.metadata =
     "org.apache.cordova.device": "0.3.0",
     "org.apache.cordova.dialogs": "0.3.0",
     "org.apache.cordova.file": "1.3.3",
-    "org.apache.cordova.file-transfer": "0.5.0"
+    "org.apache.cordova.file-transfer": "0.5.0",
+    "cocoon-plugin-ads-android-mopub": "1.0.0",
+    "cocoon-plugin-common": "1.0.2",
+    "cocoon-plugin-ads-common": "1.0.2",
+    "cocoon-plugin-ads-android-common": "1.0.0"
 }
 // BOTTOM OF METADATA
 });

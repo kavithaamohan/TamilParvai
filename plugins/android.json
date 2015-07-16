@@ -35,6 +35,14 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LDAdService\"><param name=\"android-package\" value=\"com.ludei.ads.cordova.MoPubPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LDMoPubPlugin\"><param name=\"android-package\" value=\"com.ludei.ads.cordova.MoPubPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -83,12 +91,40 @@
                         {
                             "xml": "<service android:name=\"com.plugin.gcm.GCMIntentService\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MoPubActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MraidActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.common.MoPubBrowser\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MraidVideoPlayerActivity\" />",
+                            "count": 1
                         }
                     ],
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 2
+                            "count": 3
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -116,7 +152,20 @@
         },
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
+        },
+        "cocoon-plugin-ads-android-mopub": {
+            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cocoon-plugin-common": {
+            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
+        },
+        "cocoon-plugin-ads-common": {
+            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
+        },
+        "cocoon-plugin-ads-android-common": {
+            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
+        }
+    }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "cocoon-plugin-common",
+  "version": "1.0.2",
+  "description": "Common utils for Cocoon Atomic Plugins",
+  "cordova": {
+    "id": "cocoon-plugin-common",
+    "platforms": []
+  },
+  "keywords": [
+    "cordova",
+    "cocoon",
+    "atomic",
+    "plugins",
+    "cocoonjs",
+    "ecosystem:cordova"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludei/cocoon-common"
+  },
+  "bugs": {
+    "url": "https://github.com/ludei/cocoon-common/issues"
+  },
+  "homepage": "https://github.com/ludei/cocoon-common#readme"
+}

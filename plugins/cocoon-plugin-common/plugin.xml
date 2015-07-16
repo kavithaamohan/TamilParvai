@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cocoon-plugin-common" version="1.0.2">
+    <name>Cocoon Common Utils</name>
+    <description>Common utils for Cocoon Atomic Plugins</description>
+    <license>MPL 2.0</license>
+    <repo>https://github.com/ludei/cocoon-common</repo>
+    <keywords>cordova,cocoon,atomic,plugins,cocoonjs</keywords>
+
+     <js-module src="www/cocoon.js" name="Cocoon">
+        <runs/>
+    </js-module>
+
+</plugin>
