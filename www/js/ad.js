@@ -10,8 +10,8 @@ service.configure({
          interstitialIpad:"agltb3B1Yi1pbmNyDQsSBFNpdGUtttttt", //optional
     },
     android: {
-         banner:"agltb3B1Yi1pbmNyDQsSBFNpdGUwwwwww",
-         interstitial:"agltb3B1Yi1pbmNyDQsSBFNpdGUhhhhhh"
+         banner:"87d3c7c959254a138705750425f9cae3",
+         interstitial:"a27243024bdc4cc5b2a7a7d5160116ce"
     }
 });
 
