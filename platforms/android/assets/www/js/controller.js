@@ -75,7 +75,6 @@ tamilPaarvaiControllers.controller('ArticleCtrl', ['$scope', '$routeParams', 'Ar
 		var idx = $routeParams.index;
 		$scope.index = idx;
 		$scope.categoryId = categoryId;
-		//$interval(showInterstitial, 5000);
 		$scope.displayArticleDetail();
 	}
 
@@ -97,6 +96,7 @@ tamilPaarvaiControllers.controller('ArticleCtrl', ['$scope', '$routeParams', 'Ar
 			console.log("Article : " + JSON.stringify(article));
 			//article.contentHtml = $sce.trustAsHtml(tip.content);
 			$scope.article = article;
+			$interval(showInterstitial, 5000);
 		}
 		//$scope.category = $scope.categoryId;
 		//$scope.size = tip.size;

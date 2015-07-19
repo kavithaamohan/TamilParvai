@@ -201,14 +201,11 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cocoon-plugin-common/www/cocoon.js",
-        "id": "cocoon-plugin-common.Cocoon",
-        "runs": true
-    },
-    {
-        "file": "plugins/cocoon-plugin-ads-common/www/cocoon_ads.js",
-        "id": "cocoon-plugin-ads-common.Ads",
-        "runs": true
+        "file": "plugins/com.admob.plugin/www/AdmobPlugin.js",
+        "id": "com.admob.plugin.AdmobAd",
+        "clobbers": [
+            "window.admob"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -221,10 +218,7 @@ module.exports.metadata =
     "org.apache.cordova.dialogs": "0.3.0",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.file-transfer": "0.5.0",
-    "cocoon-plugin-ads-android-mopub": "1.0.0",
-    "cocoon-plugin-common": "1.0.2",
-    "cocoon-plugin-ads-common": "1.0.2",
-    "cocoon-plugin-ads-android-common": "1.0.0"
+    "com.admob.plugin": "5.0.1"
 }
 // BOTTOM OF METADATA
 });

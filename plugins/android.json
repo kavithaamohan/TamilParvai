@@ -37,11 +37,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"LDAdService\"><param name=\"android-package\" value=\"com.ludei.ads.cordova.MoPubPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"LDMoPubPlugin\"><param name=\"android-package\" value=\"com.ludei.ads.cordova.MoPubPlugin\" /></feature>",
+                            "xml": "<feature name=\"AdmobPlugin\"><param name=\"android-package\" value=\"com.admob.cordova.plugin.AdmobAdPlugin\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -93,26 +89,18 @@
                             "count": 1
                         },
                         {
-                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MoPubActivity\" />",
+                            "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"7327000\" />",
                             "count": 1
                         },
                         {
-                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MraidActivity\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.common.MoPubBrowser\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<activity android:configChanges=\"keyboardHidden|orientation|screenSize\" android:name=\"com.mopub.mobileads.MraidVideoPlayerActivity\" />",
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" />",
                             "count": 1
                         }
                     ],
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 3
+                            "count": 2
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
@@ -123,7 +111,7 @@
                             "count": 1
                         },
                         {
-                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
                             "count": 1
                         }
                     ]
@@ -153,19 +141,9 @@
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
         },
-        "cocoon-plugin-ads-android-mopub": {
+        "com.admob.plugin": {
             "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
         }
     },
-    "dependent_plugins": {
-        "cocoon-plugin-common": {
-            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
-        },
-        "cocoon-plugin-ads-common": {
-            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
-        },
-        "cocoon-plugin-ads-android-common": {
-            "PACKAGE_NAME": "com.career.wrap.tamil.payanam"
-        }
-    }
+    "dependent_plugins": {}
 }
