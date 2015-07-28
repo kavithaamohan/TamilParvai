@@ -129,3 +129,23 @@ tamilPaarvaiControllers.controller('ArticleCtrl', ['$scope', '$routeParams', 'Ar
 }]);	
 
 
+//Controller to take directly to tip
+tamilPaarvaiControllers.controller('ArticleDirectCtrl', ['$scope', '$routeParams', '$http', '$location',  '$interval',
+	function($scope, $routeParams, $http, $location, $interval) {
+		$scope.loadTip = function () {       
+			$http.get('http://www.tamilpayanam.com/?json=y&id=' + $routeParams.id).
+				success(function(data) {
+	    	    	if (!angular.isUndefined(data.articles) && data.articles.length > 0) {
+	            		$scope.article = data.articles[0];
+	            		$interval(showInterstitial, 5000);
+	            	} else {
+	            		$location.path('/home');  
+	            	}
+	    	})
+	}	
+
+	//Collecting the details of the tip
+	$scope.loadTip();
+	
+}]);
+

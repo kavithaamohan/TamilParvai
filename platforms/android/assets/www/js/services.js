@@ -40,7 +40,7 @@ parvaiServices.factory ('StorageService', function () {
 		} 
 		console.log("Download URL : " + uri);
 		jQuery.getJSON(uri, function (data) {
-			console.log("Loading Latest Articles from Server");
+			//console.log("Loading Latest Articles from Server");
 		}).done(function(data) {
 			//console.log("Fresh Data " + JSON.stringify(data));
 			self.syncLocalStorage(data);
@@ -63,8 +63,8 @@ parvaiServices.factory ('StorageService', function () {
 	storageFactory.syncLocalStorage = function(remoteJSON) {	
 		var localArticles =  window.localStorage.getItem(keyArticles);
 		var localJSON = JSON.parse(localArticles);
-		console.log("Modified Array Size : " + _.size(remoteJSON));		
-		console.log("Local Array Size : " + _.size(localJSON));		
+		//console.log("Modified Array Size : " + _.size(remoteJSON));		
+		//console.log("Local Array Size : " + _.size(localJSON));		
 		if(_.size(remoteJSON) >  0) {
 			$.each(remoteJSON.articles, function(key, item) {
 				var newArticle = true;
