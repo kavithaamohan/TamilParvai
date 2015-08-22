@@ -16,7 +16,7 @@ body {
 }
 
 /* Main Div Styling */
-.content {
+.content, .setting {
   padding: 50px 0 0 0;
 }
 
@@ -34,7 +34,7 @@ body {
 
 /* Styling for category listing on home page */
 ul {
-	margin : 5px;
+	margin : 0px;
 	padding : 0px;
 }
 
@@ -113,4 +113,41 @@ ul.list-category li a h3 {
 .article-content a {
     margin-bottom: 20px;
     display: block;
+}
+
+.setting-control {
+	position : absolute;
+	right : 5px;
+	top : 8px;
+	height: 33px;
+  	width: 40px;
+}
+
+
+/* Setting Styling */
+#setting  {
+	background: #F0DBC7;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 98;
+	display : none; 
+}
+
+#setting ul li {
+	border-bottom: 1px Solid #C87777;	
+}
+
+#setting ul li  a {
+	font-size: 20px;
+	color: #640000;	
+	padding: 7px 20px 7px 15px;
+}
+
+#setting ul li.nav-header {
+	font-size: 22px;
+	padding: 10px;
+	color: #1F1F1F;	
+	font-weight : bold;
+	background: #ACACAC;
 }

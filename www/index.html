@@ -41,7 +41,7 @@
               <h2  id="main-title" class="main-title">{{ 'TITLE' | translate }}</h2>
               <!--h3 id="category-text" class="main-sub-title">Healthy Tips</h3-->
             </div>
-            <!--img id="setting-cntrl" class="setting-control" src="images/setting.png"/-->
+            <img id="setting-cntrl" class="setting-control" src="img/setting.png"/>
           </div>
           </div>
         </nav>
@@ -49,6 +49,15 @@
 
         <!--Body content-->
         <div ng-view class="content">
+        </div>
+
+        <!-- Settings Menu -->
+        <div id="setting" class="setting">
+          <ul class="nav nav-list">
+              <li><a onclick="share()" class="setting-link">Share</a></li>
+              <li><a onclick="rate()" class="setting-link">Rate Me</a></li>
+              <li><a onclick="feedback()" class="setting-link">Feedback</a></li>
+          </ul>
         </div>
 
         <script src="js/angular/angular.js"></script>

@@ -5,6 +5,22 @@ function onDeviceReadyAction() {
 	// Manage Ad
 	initializeAd();
 
+	//Handle Menu 
+	$( "#setting-cntrl" ).click(function() {
+		if($("#setting").is(":visible")) {
+			$("#setting").hide();
+		} else {
+			$("#setting").show(100);
+		}
+	});
+
+
+	$("body").click ( function(e) {
+    	if(e.target.className !== "setting-link" && e.target.className !== "setting-control") {
+			$("#setting").hide();
+    	}
+  	});
+
 }	
 
 
@@ -48,3 +64,37 @@ function onReceiveFail (message) {
 	    console.log("load fail: " + message.type + "  " + msg);
 	}
 } 
+
+
+//Share the app link with user
+function share() {
+	window.plugins.socialsharing.share('Try this great App - ', 'Tamil Payanam',null,'https://play.google.com/store/apps/details?id=com.career.wrap.tamil.payanam');
+	hidePopup();
+}
+
+//Provide Feedback
+function feedback() {
+	window.plugin.email.open({
+		to:      ['mail2passionwings@gmail.com'],
+		subject: 'Feedback on Tamil Payanam',
+		body:    '',
+		isHtml:  true
+	});
+	hidePopup();
+}
+
+//Rate App
+function rate() {
+	var version = device.platform;
+	hidePopup();
+	if(version == "Android") {
+		var url = "market://details?id=com.career.wrap.tamil.payanam";
+        window.open(url,"_system");		
+	} else {
+		//var url = "https://play.google.com/store/apps/details?id=com.smart.droid.telugu.tips"
+	}
+}
+
+function hidePopup() {
+	$("#setting").hide();	
+}
